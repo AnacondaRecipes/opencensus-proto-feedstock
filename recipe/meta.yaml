@@ -25,7 +25,7 @@ requirements:
     - wheel
   run:
     - python
-    - grpcio >=1.0.0,<2.0.0
+    - grpcio >=1.0.0,<2.0.0a0
 
 test:
   imports:
