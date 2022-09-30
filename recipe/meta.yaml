@@ -1,19 +1,20 @@
+{% set author = "census-instrumentation" %}
 {% set name = "opencensus-proto" %}
-{% set version = "0.1.0" %}
-{% set sha256 = "963e4524fef4596482581d3cff0943f68839c7c33a56cdf20967672175ed25bc" %}
+{% set version = "0.4.1" %}
+{% set sha256 = "e3d89f7f9ed84c9b6eee818c2e9306950519402bf803698b15c310b77ca2f0f3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/{{ author }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   number: 0
   script: 
-    - echo "__version__ = '{{ version }}'" > version.py
+    - cd gen-python
     - {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
