@@ -1,22 +1,20 @@
-{% set author = "census-instrumentation" %}
 {% set name = "opencensus-proto" %}
 {% set version = "0.4.1" %}
-{% set sha256 = "e3d89f7f9ed84c9b6eee818c2e9306950519402bf803698b15c310b77ca2f0f3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ author }}/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://github.com/census-instrumentation/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: e3d89f7f9ed84c9b6eee818c2e9306950519402bf803698b15c310b77ca2f0f3
 
 build:
-  number: 0
   trigger: 0
+  number: 1
   script: 
     - cd gen-python
-    - {{ PYTHON }} -m pip install . -vv --no-deps
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
@@ -32,16 +30,16 @@ test:
   imports:
     - opencensus
     - opencensus.proto
-  commands:
-    - pip check
   requires:
     - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/census-instrumentation/opencensus-proto
   summary: OpenCensus Proto - Language Independent Interface Types For OpenCensus
   license: Apache-2.0
-  license_type: Apache
+  license_family: Apache
   license_file: LICENSE
   description: |
     Census provides a framework to define and collect stats against metrics and to
@@ -51,7 +49,6 @@ about:
     and Java). The API interface types are defined using protos to ensure
     consistency and interoperability for the different implementations.
   doc_url: https://github.com/census-instrumentation/opencensus-proto/blob/master/README.md
-  doc_source_url: https://github.com/census-instrumentation/opencensus-proto
   dev_url: https://github.com/census-instrumentation/opencensus-proto
 
 extra:
