@@ -10,6 +10,7 @@ source:
   sha256: e3d89f7f9ed84c9b6eee818c2e9306950519402bf803698b15c310b77ca2f0f3
 
 build:
+  trigger: 0
   number: 1
   script: 
     - cd gen-python
